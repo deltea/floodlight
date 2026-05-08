@@ -6,6 +6,7 @@
 [ext_resource type="Shader" uid="uid://dd66lnvbltkdq" path="res://shaders/fisheye.gdshader" id="3_h2yge"]
 [ext_resource type="Material" uid="uid://b260g7iyok5il" path="res://assets/materials/standard.tres" id="3_lquwl"]
 [ext_resource type="PackedScene" uid="uid://c6dr4gyjn8o7t" path="res://assets/models/tree.gltf" id="6_7mycd"]
+[ext_resource type="PackedScene" uid="uid://cn4ihyjav6myx" path="res://assets/models/building.blend" id="7_272bh"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7dm0k"]
 sky_top_color = Color(0.4899, 0.58527666, 0.71, 1)
@@ -229,3 +230,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.336765, 0, -83.02669)
 [node name="Moon" type="MeshInstance3D" parent="." unique_id=254944482]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -425.54, 1000.74, -814)
 mesh = SubResource("SphereMesh_7mycd")
+
+[node name="building" parent="." unique_id=2054796644 instance=ExtResource("7_272bh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58, 0, -22)
