@@ -3,10 +3,52 @@
 [ext_resource type="Texture2D" uid="uid://cxhwfgt181c6p" path="res://assets/textures/snow.png" id="1_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://byp2witqavmoq" path="res://player.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://dssahjwk4njut" path="res://assets/models/arch.blend" id="2_0xm2m"]
+[ext_resource type="Shader" uid="uid://rcgg5451cy1q" path="res://shaders/speedlines.gdshader" id="2_5vw27"]
 [ext_resource type="Shader" uid="uid://dd66lnvbltkdq" path="res://shaders/fisheye.gdshader" id="3_h2yge"]
 [ext_resource type="Material" uid="uid://b260g7iyok5il" path="res://assets/materials/standard.tres" id="3_lquwl"]
 [ext_resource type="PackedScene" uid="uid://c6dr4gyjn8o7t" path="res://assets/models/tree.gltf" id="6_7mycd"]
 [ext_resource type="PackedScene" uid="uid://cn4ihyjav6myx" path="res://assets/models/building.blend" id="7_272bh"]
+[ext_resource type="PackedScene" uid="uid://dm20v05505abg" path="res://assets/models/power_lines.blend" id="9_kek77"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1bvp3"]
+shader = ExtResource("3_h2yge")
+shader_parameter/aspect = 1.5
+shader_parameter/distortion = 1.0
+shader_parameter/radius = 1.12
+shader_parameter/alpha = 1.0
+shader_parameter/crop = 0.943
+shader_parameter/crop_color = Color(0, 0, 0, 1)
+shader_parameter/crop_feathering = 0.1
+shader_parameter/channel_offset = 3.259879990946679e-09
+shader_parameter/noise_strength = 0.0
+
+[sub_resource type="Curve" id="Curve_5vw27"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.25387597, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_kek77"]
+curve = SubResource("Curve_5vw27")
+
+[sub_resource type="Curve" id="Curve_4c57u"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.50581396, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_efxa6"]
+curve = SubResource("Curve_4c57u")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_5vw27"]
+frequency = 0.04
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_5vw27"]
+noise = SubResource("FastNoiseLite_5vw27")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kek77"]
+shader = ExtResource("2_5vw27")
+shader_parameter/noise = SubResource("NoiseTexture2D_5vw27")
+shader_parameter/alpha = 1.0
+shader_parameter/falloff = SubResource("CurveTexture_kek77")
+shader_parameter/lineFalloff = SubResource("CurveTexture_efxa6")
+shader_parameter/speed = 5.0
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7dm0k"]
 sky_top_color = Color(0.4899, 0.58527666, 0.71, 1)
@@ -138,18 +180,6 @@ rings = 5
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0xm2m"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1bvp3"]
-shader = ExtResource("3_h2yge")
-shader_parameter/aspect = 1.5
-shader_parameter/distortion = 1.0
-shader_parameter/radius = 1.12
-shader_parameter/alpha = 1.0
-shader_parameter/crop = 0.943
-shader_parameter/crop_color = Color(0, 0, 0, 1)
-shader_parameter/crop_feathering = 0.1
-shader_parameter/channel_offset = 3.259879990946679e-09
-shader_parameter/noise_strength = 0.0
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7mycd"]
 disable_fog = true
 emission_enabled = true
@@ -164,6 +194,21 @@ height = 160.0
 
 [node name="Main" type="Node3D" unique_id=969608187]
 
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1861638904]
+
+[node name="Fisheye" type="ColorRect" parent="CanvasLayer" unique_id=1818887078]
+visible = false
+material = SubResource("ShaderMaterial_1bvp3")
+offset_right = 959.9993
+offset_bottom = 640.0
+mouse_filter = 1
+
+[node name="Speedlines" type="ColorRect" parent="CanvasLayer" unique_id=411901159]
+material = SubResource("ShaderMaterial_kek77")
+offset_right = 960.0
+offset_bottom = 640.0
+mouse_filter = 1
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1870267045]
 environment = SubResource("Environment_0xm2m")
 
@@ -174,11 +219,12 @@ assets = SubResource("Terrain3DAssets_lquwl")
 top_level = true
 metadata/_edit_lock_ = true
 
-[node name="Player" parent="." unique_id=262260599 instance=ExtResource("1_ig7tw")]
+[node name="Player" parent="." unique_id=262260599 node_paths=PackedStringArray("speedlines") instance=ExtResource("1_ig7tw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+speedlines = NodePath("../CanvasLayer/Speedlines")
 
 [node name="Snow" type="GPUParticles3D" parent="." unique_id=1327675728]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 40, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 80, 0)
 amount = 20000
 lifetime = 90.0
 preprocess = 90.0
@@ -215,15 +261,6 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -150, 0, -264)
 [node name="arch6" parent="." unique_id=1295063221 instance=ExtResource("2_0xm2m")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -150, 0, 264)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1861638904]
-
-[node name="Fisheye" type="ColorRect" parent="CanvasLayer" unique_id=1818887078]
-visible = false
-material = SubResource("ShaderMaterial_1bvp3")
-offset_right = 959.9993
-offset_bottom = 640.0
-mouse_filter = 1
-
 [node name="Tree" parent="." unique_id=1492534224 instance=ExtResource("6_7mycd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.336765, 0, -83.02669)
 
@@ -233,3 +270,6 @@ mesh = SubResource("SphereMesh_7mycd")
 
 [node name="building" parent="." unique_id=2054796644 instance=ExtResource("7_272bh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58, 0, -22)
+
+[node name="power_lines" parent="." unique_id=1181578979 instance=ExtResource("9_kek77")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -76, 0, 20)
