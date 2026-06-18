@@ -210,10 +210,10 @@ visibility_aabb = AABB(-230.13432, -40.226284, -229.91963, 473.011, 41.414608, 4
 process_material = SubResource("ParticleProcessMaterial_ig7tw")
 draw_pass_1 = SubResource("SphereMesh_ig7tw")
 
-[node name="arch" parent="." unique_id=1972171230 instance=ExtResource("2_0xm2m")]
+[node name="arch" parent="." unique_id=1054330613 instance=ExtResource("2_0xm2m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 350, 0, 0)
 
-[node name="arch2" parent="." unique_id=545706437 instance=ExtResource("2_0xm2m")]
+[node name="arch2" parent="." unique_id=1998987120 instance=ExtResource("2_0xm2m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -350, 0, 0)
 
 [node name="Tree" parent="." unique_id=1492534224 instance=ExtResource("6_7mycd")]
