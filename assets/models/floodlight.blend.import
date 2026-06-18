@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://2lmklnp46tes"
-path="res://.godot/imported/four_leg_platform.blend-f979a0a1ec9bb2e1e2dcbe9432fab04f.scn"
+uid="uid://ig67gdwwct2l"
+path="res://.godot/imported/floodlight.blend-b1461218248b9e725ee0db7ba076e5da.scn"
 
 [deps]
 
-source_file="res://assets/models/four_leg_platform.blend"
-dest_files=["res://.godot/imported/four_leg_platform.blend-f979a0a1ec9bb2e1e2dcbe9432fab04f.scn"]
+source_file="res://assets/models/floodlight.blend"
+dest_files=["res://.godot/imported/floodlight.blend-b1461218248b9e725ee0db7ba076e5da.scn"]
 
 [params]
 
@@ -46,13 +46,8 @@ _subresources={
 },
 "Material.001": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://assets/materials/standard.tres",
-"use_external/path": "uid://b260g7iyok5il"
-},
-"Material.002": {
-"use_external/enabled": true,
-"use_external/fallback_path": "res://assets/materials/standard.tres",
-"use_external/path": "uid://b260g7iyok5il"
+"use_external/fallback_path": "res://assets/materials/light_cone.tres",
+"use_external/path": "uid://bor836oktvioq"
 }
 }
 }

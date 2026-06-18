@@ -5,7 +5,7 @@ extends CharacterBody3D
 @export var acceleration = 100
 @export var cam_tilt = 0
 
-@export var jump_height = 1
+@export var jump_height = 1.0
 @export var cam_sensitivity = 1
 @export var gravity = 9.8
 
@@ -21,7 +21,7 @@ var is_dashing = false
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	speedlines.visible = false
-	pivot.position.y = 1
+	pivot.position.y = 0.5
 
 func _process(dt: float) -> void:
 	speedlines.visible = is_dashing
@@ -39,9 +39,6 @@ func _physics_process(dt: float):
 		$DashTimer.start()
 		is_dashing = true
 		dash_dir = dir
-	else:
-		jump_height = 1
-		gravity = 9.8
 
 	if is_dashing:
 		velocity.x = dash_dir.x * 50

@@ -1,0 +1,15 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bor836oktvioq"]
+
+[ext_resource type="Texture2D" uid="uid://buv4241h3bajx" path="res://assets/textures/light-cone.png" id="1_6s3cs"]
+
+[resource]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+albedo_color = Color(1, 0.9835, 0.89, 0.6)
+albedo_texture = ExtResource("1_6s3cs")
+uv1_offset = Vector3(0, -0.001, 0)
+uv1_triplanar_sharpness = 0.25881627
+distance_fade_mode = 2
+distance_fade_max_distance = 5.0
+stencil_flags = 2

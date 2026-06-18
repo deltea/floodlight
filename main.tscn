@@ -5,9 +5,12 @@
 [ext_resource type="PackedScene" uid="uid://dssahjwk4njut" path="res://assets/models/arch.blend" id="2_0xm2m"]
 [ext_resource type="Shader" uid="uid://rcgg5451cy1q" path="res://shaders/speedlines.gdshader" id="2_5vw27"]
 [ext_resource type="Shader" uid="uid://dd66lnvbltkdq" path="res://shaders/fisheye.gdshader" id="3_h2yge"]
+[ext_resource type="Environment" uid="uid://bvar8o2bj67lu" path="res://environment.tres" id="3_kek77"]
 [ext_resource type="PackedScene" uid="uid://c6dr4gyjn8o7t" path="res://assets/models/tree.gltf" id="6_7mycd"]
 [ext_resource type="PackedScene" uid="uid://cn4ihyjav6myx" path="res://assets/models/building.blend" id="7_272bh"]
 [ext_resource type="PackedScene" uid="uid://2lmklnp46tes" path="res://assets/models/four_leg_platform.blend" id="8_5vw27"]
+[ext_resource type="PackedScene" uid="uid://dwkv0utsd1t4r" path="res://assets/models/column_base.blend" id="10_4c57u"]
+[ext_resource type="PackedScene" uid="uid://da10tkpwua6xb" path="res://scenes/floodlight.tscn" id="11_efxa6"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1bvp3"]
 shader = ExtResource("3_h2yge")
@@ -48,30 +51,6 @@ shader_parameter/alpha = 1.0
 shader_parameter/falloff = SubResource("CurveTexture_kek77")
 shader_parameter/lineFalloff = SubResource("CurveTexture_efxa6")
 shader_parameter/speed = 5.0
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7dm0k"]
-sky_top_color = Color(0.4899, 0.58527666, 0.71, 1)
-sky_horizon_color = Color(0.35189998, 0.42041, 0.51, 1)
-ground_bottom_color = Color(0.49019608, 0.58431375, 0.70980394, 1)
-ground_horizon_color = Color(0.3529412, 0.41960785, 0.50980395, 1)
-ground_curve = 0.53817284
-energy_multiplier = 1.5
-
-[sub_resource type="Sky" id="Sky_ig7tw"]
-sky_material = SubResource("ProceduralSkyMaterial_7dm0k")
-
-[sub_resource type="Environment" id="Environment_0xm2m"]
-background_mode = 2
-sky = SubResource("Sky_ig7tw")
-ambient_light_color = Color(1, 1, 1, 1)
-ambient_light_energy = 0.0
-fog_enabled = true
-fog_light_color = Color(0.4071, 0.48330832, 0.59, 1)
-fog_density = 0.001
-fog_height = 18.0
-fog_height_density = 0.05
-volumetric_fog_emission = Color(1, 1, 1, 1)
-volumetric_fog_emission_energy = 0.0
 
 [sub_resource type="Gradient" id="Gradient_h2yge"]
 offsets = PackedFloat32Array(0.2, 1)
@@ -205,7 +184,7 @@ offset_bottom = 640.0
 mouse_filter = 1
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1870267045]
-environment = SubResource("Environment_0xm2m")
+environment = ExtResource("3_kek77")
 
 [node name="Terrain" type="Terrain3D" parent="." unique_id=1273055275]
 data_directory = "res://terrain"
@@ -215,7 +194,11 @@ top_level = true
 metadata/_edit_lock_ = true
 
 [node name="Player" parent="." unique_id=262260599 node_paths=PackedStringArray("speedlines") instance=ExtResource("1_ig7tw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.67502, 5.6470547, 50.663654)
+floor_max_angle = 1.5707964
+max_speed = 8
+jump_height = 1.7
+gravity = 20.0
 speedlines = NodePath("../CanvasLayer/Speedlines")
 
 [node name="Snow" type="GPUParticles3D" parent="." unique_id=1327675728]
@@ -256,5 +239,59 @@ mesh = SubResource("SphereMesh_7mycd")
 [node name="building" parent="." unique_id=2054796644 instance=ExtResource("7_272bh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -89, 0, -22)
 
-[node name="four_leg_platform" parent="." unique_id=1883240534 instance=ExtResource("8_5vw27")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45, 0, 0)
+[node name="four_leg_platform" parent="." unique_id=682802472 instance=ExtResource("8_5vw27")]
+transform = Transform3D(1, 0, 0, 0, 0.999518, 0.03104442, 0, -0.03104442, 0.999518, 45, 0, 15)
+
+[node name="four_leg_platform5" parent="." unique_id=1370264263 instance=ExtResource("8_5vw27")]
+transform = Transform3D(0.97858447, 0.00017244877, -0.20584549, 0, 0.99999976, 0.0008377581, 0.20584553, -0.00081981707, 0.97858423, 38.83349, -2.6126022, 29.766468)
+
+[node name="four_leg_platform6" parent="." unique_id=767966087 instance=ExtResource("8_5vw27")]
+transform = Transform3D(0.9789886, 0.0063304272, -0.20381685, 0, 0.9995181, 0.031044424, 0.20391516, -0.030392136, 0.9785168, 28.026703, -5.374565, 42.105217)
+
+[node name="four_leg_platform7" parent="." unique_id=568975951 instance=ExtResource("8_5vw27")]
+transform = Transform3D(0.83399093, 0.079557024, 0.5460126, -0.03931829, 0.9956039, -0.08500934, -0.5503756, 0.049428754, 0.8334529, 14.1597595, -7.3225994, 52.35444)
+
+[node name="four_leg_platform8" parent="." unique_id=465135567 instance=ExtResource("8_5vw27")]
+transform = Transform3D(-0.18138811, -0.027762344, -0.9830196, -0.101228155, 0.9948187, -0.009416816, 0.97818774, 0.09780117, -0.18325855, 1.7177382, -9.478329, 57.181175)
+
+[node name="four_leg_platform10" parent="." unique_id=503299538 instance=ExtResource("8_5vw27")]
+transform = Transform3D(0.14328746, -0.3124452, -0.93906707, -0.041934114, 0.9460894, -0.3211801, 0.9887923, 0.08540001, 0.12246077, -8.987716, -11.0037, 55.42598)
+
+[node name="four_leg_platform9" parent="." unique_id=372593266 instance=ExtResource("8_5vw27")]
+transform = Transform3D(-0.34129038, -0.44861627, -0.82599306, -0.07727219, 0.88917184, -0.45100203, 0.9367764, -0.09009634, -0.33813113, -20.073833, -15.426935, 56.095974)
+
+[node name="four_leg_platform2" parent="." unique_id=563330913 instance=ExtResource("8_5vw27")]
+transform = Transform3D(0.8646041, 0.04959538, -0.5, -0.05726781, 0.99835885, 0, 0.49917942, 0.028633906, 0.8660254, 36.243526, -0.7741146, 0.5466466)
+
+[node name="four_leg_platform3" parent="." unique_id=1195818862 instance=ExtResource("8_5vw27")]
+transform = Transform3D(0.99894196, -0.04599066, 0, 0.045494474, 0.9881645, 0.14649741, -0.0067375116, -0.14634238, 0.9892111, 40.636234, 0, -13.267928)
+
+[node name="four_leg_platform4" parent="." unique_id=415655810 instance=ExtResource("8_5vw27")]
+transform = Transform3D(0.4947035, 0.07258392, -0.8660254, -0.14516784, 0.98940706, 8.881784e-16, 0.85685176, 0.12571906, 0.49999997, 27.960033, -1.7820396, -29.360651)
+
+[node name="column_base2" parent="." unique_id=1545989872 instance=ExtResource("10_4c57u")]
+transform = Transform3D(0.06820688, 0, -0.99767125, 0, 1, 0, 0.99767125, 0, 0.06820688, 14.924767, 0, 53.542915)
+
+[node name="column_base3" parent="." unique_id=1118182179 instance=ExtResource("10_4c57u")]
+transform = Transform3D(-0.9377981, 0, -0.34718126, 0, 1, 0, 0.34718126, 0, -0.9377981, 27.653217, 0, 41.9364)
+
+[node name="column_base4" parent="." unique_id=668613394 instance=ExtResource("10_4c57u")]
+transform = Transform3D(-0.8779746, 0, 0.47870716, 0, 1, 0, -0.47870716, 0, -0.8779746, 38.85029, 0, 29.941587)
+
+[node name="column_base5" parent="." unique_id=346713947 instance=ExtResource("10_4c57u")]
+transform = Transform3D(0.38886663, 0, 0.9212941, 0, 1, 0, -0.9212941, 0, 0.38886663, 45.88837, 0, 15.09985)
+
+[node name="column_base6" parent="." unique_id=584608842 instance=ExtResource("10_4c57u")]
+transform = Transform3D(-0.19373767, 0, -0.98105335, 0, 1, 0, 0.98105335, 0, -0.19373767, 36.72957, 0, 0.13557243)
+
+[node name="column_base7" parent="." unique_id=1886477215 instance=ExtResource("10_4c57u")]
+transform = Transform3D(-0.83777595, 0, 0.5460141, 0, 1, 0, -0.5460141, 0, -0.83777595, 40.55613, 0, -13.71628)
+
+[node name="column_base8" parent="." unique_id=1723048697 instance=ExtResource("10_4c57u")]
+transform = Transform3D(0.7824667, 0, 0.62269235, 0, 1, 0, -0.62269235, 0, 0.7824667, 28.13577, 0, -29.046516)
+
+[node name="Floodlight" parent="." unique_id=443205869 instance=ExtResource("11_efxa6")]
+transform = Transform3D(-0.61427134, 0, -0.78909487, 0, 1, 0, 0.78909487, 0, -0.61427134, -11.974741, 0, -11.493626)
+
+[node name="Floodlight2" parent="." unique_id=708467458 instance=ExtResource("11_efxa6")]
+transform = Transform3D(0.9266008, 0, 0.37604636, 0, 1, 0, -0.37604636, 0, 0.9266008, 7.7250423, 0, 105.88124)

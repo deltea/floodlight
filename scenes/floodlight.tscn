@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://da10tkpwua6xb"]
+
+[ext_resource type="PackedScene" uid="uid://ig67gdwwct2l" path="res://assets/models/floodlight.blend" id="1_dlgs5"]
+
+[node name="Floodlight" type="Node3D" unique_id=443205869]
+
+[node name="Model" parent="." unique_id=1807359878 instance=ExtResource("1_dlgs5")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=1966622665]
+transform = Transform3D(1, 0, 0, 0, 0.9709884, -0.23912664, 0, 0.23912664, 0.9709884, 0, 0.6983974, -0.4570099)
+visible = false
+light_color = Color(1, 0.7583333, 0.5, 1)
+light_energy = 16.0
+spot_range = 181.745
+spot_attenuation = -0.39
+
+[editable path="Model"]
