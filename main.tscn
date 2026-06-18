@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cn4ihyjav6myx" path="res://assets/models/building.blend" id="7_272bh"]
 [ext_resource type="PackedScene" uid="uid://2lmklnp46tes" path="res://assets/models/four_leg_platform.blend" id="8_5vw27"]
 [ext_resource type="PackedScene" uid="uid://dwkv0utsd1t4r" path="res://assets/models/column_base.blend" id="10_4c57u"]
-[ext_resource type="PackedScene" uid="uid://da10tkpwua6xb" path="res://scenes/floodlight.tscn" id="11_efxa6"]
+[ext_resource type="PackedScene" uid="uid://sjrha48ovaov" path="res://assets/models/floodlight_alt.blend" id="12_dg77c"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1bvp3"]
 shader = ExtResource("3_h2yge")
@@ -195,8 +195,7 @@ metadata/_edit_lock_ = true
 
 [node name="Player" parent="." unique_id=262260599 node_paths=PackedStringArray("speedlines") instance=ExtResource("1_ig7tw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.67502, 5.6470547, 50.663654)
-floor_max_angle = 1.5707964
-max_speed = 8
+max_speed = 12
 jump_height = 1.7
 gravity = 20.0
 speedlines = NodePath("../CanvasLayer/Speedlines")
@@ -211,26 +210,14 @@ visibility_aabb = AABB(-230.13432, -40.226284, -229.91963, 473.011, 41.414608, 4
 process_material = SubResource("ParticleProcessMaterial_ig7tw")
 draw_pass_1 = SubResource("SphereMesh_ig7tw")
 
-[node name="arch" parent="." unique_id=159809146 instance=ExtResource("2_0xm2m")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 150, 0, 0)
+[node name="arch" parent="." unique_id=1972171230 instance=ExtResource("2_0xm2m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 350, 0, 0)
 
-[node name="arch3" parent="." unique_id=927757050 instance=ExtResource("2_0xm2m")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 150, 0, 264)
-
-[node name="arch4" parent="." unique_id=820207082 instance=ExtResource("2_0xm2m")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 150, 0, -264)
-
-[node name="arch2" parent="." unique_id=1859294593 instance=ExtResource("2_0xm2m")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -150, 0, 0)
-
-[node name="arch5" parent="." unique_id=541756521 instance=ExtResource("2_0xm2m")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -150, 0, -264)
-
-[node name="arch6" parent="." unique_id=1295063221 instance=ExtResource("2_0xm2m")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -150, 0, 264)
+[node name="arch2" parent="." unique_id=545706437 instance=ExtResource("2_0xm2m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -350, 0, 0)
 
 [node name="Tree" parent="." unique_id=1492534224 instance=ExtResource("6_7mycd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.336765, 0, -83.02669)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 20.336765, 0, -90.54464)
 
 [node name="Moon" type="MeshInstance3D" parent="." unique_id=254944482]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -425.54, 1000.74, -814)
@@ -290,8 +277,8 @@ transform = Transform3D(-0.83777595, 0, 0.5460141, 0, 1, 0, -0.5460141, 0, -0.83
 [node name="column_base8" parent="." unique_id=1723048697 instance=ExtResource("10_4c57u")]
 transform = Transform3D(0.7824667, 0, 0.62269235, 0, 1, 0, -0.62269235, 0, 0.7824667, 28.13577, 0, -29.046516)
 
-[node name="Floodlight" parent="." unique_id=443205869 instance=ExtResource("11_efxa6")]
-transform = Transform3D(-0.61427134, 0, -0.78909487, 0, 1, 0, 0.78909487, 0, -0.61427134, -11.974741, 0, -11.493626)
+[node name="floodlight_alt2" parent="." unique_id=1578032399 instance=ExtResource("12_dg77c")]
+transform = Transform3D(0.76987875, 0, -0.6381902, 0, 1, 0, 0.6381902, 0, 0.76987875, -12.694258, 0, -11.739231)
 
-[node name="Floodlight2" parent="." unique_id=708467458 instance=ExtResource("11_efxa6")]
-transform = Transform3D(0.9266008, 0, 0.37604636, 0, 1, 0, -0.37604636, 0, 0.9266008, 7.7250423, 0, 105.88124)
+[node name="floodlight_alt3" parent="." unique_id=1500095863 instance=ExtResource("12_dg77c")]
+transform = Transform3D(-0.31143942, 0, 0.950266, 0, 1, 0, -0.950266, 0, -0.31143942, 8.264479, 0, 106.48312)
