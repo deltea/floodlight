@@ -5,10 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://dssahjwk4njut" path="res://assets/models/arch.blend" id="2_0xm2m"]
 [ext_resource type="Shader" uid="uid://rcgg5451cy1q" path="res://shaders/speedlines.gdshader" id="2_5vw27"]
 [ext_resource type="Shader" uid="uid://dd66lnvbltkdq" path="res://shaders/fisheye.gdshader" id="3_h2yge"]
-[ext_resource type="Material" uid="uid://b260g7iyok5il" path="res://assets/materials/standard.tres" id="3_lquwl"]
 [ext_resource type="PackedScene" uid="uid://c6dr4gyjn8o7t" path="res://assets/models/tree.gltf" id="6_7mycd"]
 [ext_resource type="PackedScene" uid="uid://cn4ihyjav6myx" path="res://assets/models/building.blend" id="7_272bh"]
-[ext_resource type="PackedScene" uid="uid://dm20v05505abg" path="res://assets/models/power_lines.blend" id="9_kek77"]
+[ext_resource type="PackedScene" uid="uid://2lmklnp46tes" path="res://assets/models/four_leg_platform.blend" id="8_5vw27"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1bvp3"]
 shader = ExtResource("3_h2yge")
@@ -68,9 +67,9 @@ ambient_light_color = Color(1, 1, 1, 1)
 ambient_light_energy = 0.0
 fog_enabled = true
 fog_light_color = Color(0.4071, 0.48330832, 0.59, 1)
-fog_density = 0.002
-fog_height = 26.5
-fog_height_density = 0.08
+fog_density = 0.001
+fog_height = 18.0
+fog_height_density = 0.05
 volumetric_fog_emission = Color(1, 1, 1, 1)
 volumetric_fog_emission_energy = 0.0
 
@@ -176,10 +175,6 @@ height = 0.2
 radial_segments = 10
 rings = 5
 
-[sub_resource type="BoxMesh" id="BoxMesh_ig7tw"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_0xm2m"]
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7mycd"]
 disable_fog = true
 emission_enabled = true
@@ -233,16 +228,6 @@ visibility_aabb = AABB(-230.13432, -40.226284, -229.91963, 473.011, 41.414608, 4
 process_material = SubResource("ParticleProcessMaterial_ig7tw")
 draw_pass_1 = SubResource("SphereMesh_ig7tw")
 
-[node name="Thing" type="StaticBody3D" parent="." unique_id=19515744]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1, -4)
-
-[node name="MeshInstance" type="MeshInstance3D" parent="Thing" unique_id=785510013]
-material_override = ExtResource("3_lquwl")
-mesh = SubResource("BoxMesh_ig7tw")
-
-[node name="CollisionShape" type="CollisionShape3D" parent="Thing" unique_id=340670547]
-shape = SubResource("BoxShape3D_0xm2m")
-
 [node name="arch" parent="." unique_id=159809146 instance=ExtResource("2_0xm2m")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 150, 0, 0)
 
@@ -269,7 +254,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -425.54, 1000.74, -814)
 mesh = SubResource("SphereMesh_7mycd")
 
 [node name="building" parent="." unique_id=2054796644 instance=ExtResource("7_272bh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58, 0, -22)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -89, 0, -22)
 
-[node name="power_lines" parent="." unique_id=1181578979 instance=ExtResource("9_kek77")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -76, 0, 20)
+[node name="four_leg_platform" parent="." unique_id=1883240534 instance=ExtResource("8_5vw27")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45, 0, 0)
