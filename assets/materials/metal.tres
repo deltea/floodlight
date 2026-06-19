@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://b6vyo5kdq2wpn"]
+
+[resource]
+shading_mode = 2
+albedo_color = Color(0.70796674, 0.7079664, 0.7079665, 1)
+emission_enabled = true
+rim_tint = 0.0
+ao_light_affect = 0.51
+subsurf_scatter_strength = 0.5
+grow_amount = 0.05
+proximity_fade_distance = 41.96
+stencil_flags = 2
+stencil_color = Color(1, 1, 1, 1)
+stencil_outline_thickness = 0.067
